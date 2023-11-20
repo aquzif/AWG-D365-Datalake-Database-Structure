@@ -1,0 +1,81 @@
+Project Synapse {
+  database_type: 'Sql Server'
+  Host: 'asd'
+  Note: '''
+    # Azure Synapse Database for D365
+    ### Host: `asatst1-ondemand.sql.azuresynapse.net`
+  '''
+}
+
+Table SalesTable {
+    SalesId string [note: "Numer zamówienia sprzedaży"]
+    AngGlazingQty int [note: "Ilość szklen na nagłówku"]
+    WorkerSalesResponsible int [note: "ID Osoby odpowiedzialnej za zamówienie"]
+    CustAccount string [note: "Numer klienta"]
+    SalesName string [note: "Nazwa klienta"]
+    SalesStatus SalesStatus [note: "Stan zamówienia"]
+    note: "Tabela z nagłówkami zamówienia"
+}
+
+Table SalesLine {
+    SalesId string [note: "Numer zamówienia sprzedaży"]
+    SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
+    inventDimId string 
+    note: "Tabela z pozycjami zamówienia"
+}
+
+Table InventDim {
+    inventDimId string
+    configId string
+    note: "Wymiary magazynowe"
+}
+
+Table EcoResConfiguration {
+    Name string [note: "Nazwa konfiguracji np. N10024/23/0000901-"]
+    AngProductCategoryId string [note: "Kategoria produktu"]
+    AngGlassesQuantity int [note: "Ilość szklen danej konfiguracji"]
+    note: "Tabela z konfiguracjami wierszy zamówień"
+}
+
+Table DirPartyTable {
+    RecId string [note: "ID Osoby"]
+    Name string [note: "Nazwa osoby"]
+    note: "Globalna książka adresowa"
+}
+
+Table CustTable {
+    AccountNum string [note: "Numer klienta"]
+    SalesDistrictId string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
+    note: "Tabela z danymi klientów"
+}
+
+Table CaseDetailBase {
+    CaseId string [note: "Numer sprawy"]
+    ComplaintNumber string [note: "Numer reklamacji"]
+    note: "Sprawy i reklamacje"
+}
+
+Table CaseDetail {
+    CaseId string [note: "Numer sprawy"]
+    note: "Szczegóły sprawy/reklamacji"
+}
+
+enum SalesStatus{
+    "0 - Brak"
+    "1 - Otwarte"
+    "2 - Dostarczone"
+    "3 - Zafakturowane"
+    "4 - Anuloowane"
+    1 [note: "Otwarte"]
+    2 [note: "Dostarczone"]
+    3 [note: "Zafakturowane"]
+    4 [note: "Anuloowane"]
+}
+
+Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
+Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
+Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
+Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
+Ref: "SalesTable"."CustAccount" < "CustTable"."AccountNum"  
+Ref: "CaseDetailBase"."CaseId" < "CaseDetail"."CaseId"
+
