@@ -13,7 +13,11 @@ jobs:
       run: sudo npm install -g dbdocs
     - name: Check dbdocs
       run: dbdocs
+    # concat recursive all dbml files into _output.dbml
+    - name: Concat dbml files
+      run: |
+        cat $(find . -name "*.dbml") > _output.dbml
     - name: Update dbdocs project
       env:
         DBDOCS_TOKEN: ${{ secrets.DBDOCS_TOKEN }}
-      run: dbdocs build ./synapse.dbml
+      run: dbdocs build ./_output.dbml
