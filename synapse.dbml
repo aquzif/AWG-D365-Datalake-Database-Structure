@@ -7,6 +7,9 @@ Project Synapse {
   '''
 }
 
+
+
+
 Table SalesTable {
     SalesId string [note: "Numer zamówienia sprzedaży"]
     AngGlazingQty int [note: "Ilość szklen na nagłówku"]
@@ -60,6 +63,26 @@ Table CaseDetail {
     note: "Szczegóły sprawy/reklamacji"
 }
 
+Table WHSLoadTable{
+    LoadId string [note: "Identfikator załadunku (z TMS)"]
+    note: "Tabela z nagłówkami załadunków"
+}
+
+Table WHSLoadLine{
+    LoadId string [note: "Identfikator załadunku (z TMS)"]
+    OrderNum string [note: "Numer zamówienia sprzedaży"]
+    note: "Tabela z wierszami transportowymi - zamówieniami"
+}
+
+Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
+Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
+Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
+Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
+Ref: "SalesTable"."CustAccount" < "CustTable"."AccountNum"  
+Ref: "CaseDetailBase"."CaseId" < "CaseDetail"."CaseId"
+Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId" 
+Ref: "SalesTable"."SalesId" - "WHSLoadLine"."OrderNum"
+
 enum SalesStatus{
     "0 - Brak"
     "1 - Otwarte"
@@ -71,11 +94,4 @@ enum SalesStatus{
     3 [note: "Zafakturowane"]
     4 [note: "Anuloowane"]
 }
-
-Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
-Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
-Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
-Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
-Ref: "SalesTable"."CustAccount" < "CustTable"."AccountNum"  
-Ref: "CaseDetailBase"."CaseId" < "CaseDetail"."CaseId"
 
