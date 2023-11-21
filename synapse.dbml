@@ -93,9 +93,14 @@ Table ProdJournalProd {
 
 Table ProdJournalTable {
     JournalId string
-    PostedDateTime [note: "data skanu na MWG"]
+    PostedDateTime datetime [note: "data skanu na MWG"]
 }
 
+Table CustTrans {
+    AmountCur string [note: "Nazwa waluty"]
+    MCRPaymOrderID string [note: "Numer zamówienia sprzedaży"] 
+    Invoice string [note: "Numer faktury"]
+}
 
 
 
@@ -109,6 +114,8 @@ Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId"
 Ref: "SalesTable"."SalesId" - "WHSLoadLine"."OrderNum"
 Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
 Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"  
+Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
+Ref: "SalesTable"."SalesId" < "CustTrans"."MCRPaymOrderID"
 
 enum SalesStatus {
     "0 - Brak"
