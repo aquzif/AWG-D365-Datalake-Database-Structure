@@ -65,6 +65,7 @@ Table CaseDetail {
 
 Table WHSLoadTable{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
+    LoadSchedShipUTCDateTime datetime [note: "Data i godzina zaplanowanej wysyłki ładunku"]
     note: "Tabela z nagłówkami załadunków"
 }
 
@@ -74,6 +75,30 @@ Table WHSLoadLine{
     note: "Tabela z wierszami transportowymi - zamówieniami"
 }
 
+Table ProdTable {
+    DlvDate datetime [note: "Data produkcji"]
+    SchedDate datetime [note: "Planowana data zdania"]
+    ProdId string [note: "Numer zlecenia produkcyjnego"]
+    CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
+    ProdGroupId string [note: "Linia produkcyjna"]
+    InventRefId string [note: "Numer odwołania"]
+    note: "Tabela ze zleceniami produkcyjnymi"
+}
+
+Table ProdJournalProd {
+    AngWindowNumber string [note: "Numer pozycji produkowanej (np. kiedy jest 1, u nas będzie 001)"]
+    ProdId string [note: "Numer zlecenia produkcyjnego"]
+    JournalId string
+}
+
+Table ProdJournalTable {
+    JournalId string
+    PostedDateTime [note: "data skanu na MWG"]
+}
+
+
+
+
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
 Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
@@ -82,8 +107,10 @@ Ref: "SalesTable"."CustAccount" < "CustTable"."AccountNum"
 Ref: "CaseDetailBase"."CaseId" < "CaseDetail"."CaseId"
 Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId" 
 Ref: "SalesTable"."SalesId" - "WHSLoadLine"."OrderNum"
+Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
+Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"  
 
-enum SalesStatus{
+enum SalesStatus {
     "0 - Brak"
     "1 - Otwarte"
     "2 - Dostarczone"
