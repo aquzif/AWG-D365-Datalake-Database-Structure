@@ -23,6 +23,7 @@ Table SalesTable {
 Table SalesLine {
     SalesId string [note: "Numer zamówienia sprzedaży"]
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
+    SalesPrice decimal [note: "Cena na zamówieniu sprzedaży"]
     inventDimId string 
     note: "Tabela z pozycjami zamówienia"
 }
