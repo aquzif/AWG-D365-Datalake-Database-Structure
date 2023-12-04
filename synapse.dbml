@@ -103,6 +103,15 @@ Table CustTrans {
     Invoice string [note: "Numer faktury"]
 }
 
+Table PurchTable {
+    PurchId string [note: "Numer zamówienia zakupu"]
+    note: "Tabela z nagłówkami zamówień zakupów"
+}
+
+Table PurchLine {
+    PurchId string [note: "Numer zamówienia zakupu"]
+    note: "Tabela z wierszami zamówienia zakupu"
+}
 
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
@@ -117,6 +126,7 @@ Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
 Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"  
 Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
 Ref: "SalesTable"."SalesId" < "CustTrans"."MCRPaymOrderID"
+Ref: "PurchTable"."PurchId" < "PurchLine"."PurchId"
 
 enum SalesStatus {
     "0 - Brak"
