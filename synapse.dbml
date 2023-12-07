@@ -23,7 +23,9 @@ Table SalesTable {
 Table SalesLine {
     SalesId string [note: "Numer zamówienia sprzedaży"]
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
-    SalesPrice decimal [note: "Cena na zamówieniu sprzedaży"]
+    CurrencyCode string [note: "3 - znakowy kod waluty"]
+    SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
+    SalesGrossPrice decimal [note: "Cena brutto na zamówieniu sprzedaży (VIEW)"]
     inventDimId string 
     note: "Tabela z pozycjami zamówienia"
 }
