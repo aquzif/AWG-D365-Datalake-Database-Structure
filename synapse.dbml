@@ -17,6 +17,7 @@ Table SalesTable {
     CustAccount string [note: "Numer klienta"]
     SalesName string [note: "Nazwa klienta"]
     SalesStatus SalesStatus [note: "Stan zamówienia"]
+    TaxGroup string [note: "Kod grupy podatkowej"]
     note: "Tabela z nagłówkami zamówienia"
 }
 
@@ -25,8 +26,9 @@ Table SalesLine {
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
     CurrencyCode string [note: "3 - znakowy kod waluty"]
     SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
-    SalesGrossPrice decimal [note: "Cena brutto na zamówieniu sprzedaży (VIEW)"]
-    inventDimId string 
+    "(WIDOK) SalesGrossPrice" decimal [note: "Cena brutto na zamówieniu sprzedaży w walucie"]
+    "(PBI) Szklenia Per Okno" int [note: "Ilość szkleń dla pojedyńczego okna w wierszu"]
+    "(PBI) Szklenia Per Wariant" int [note: "Ilość szkleń dla całego wiersza "]
     note: "Tabela z pozycjami zamówienia"
 }
 
@@ -115,6 +117,11 @@ Table PurchLine {
     note: "Tabela z wierszami zamówienia zakupu"
 }
 
+Table TaxGroupHeading {
+    TaxGroup string [note: "Kod grupy podatkowej"]
+    note: "Tabela z grupami podatkowymi"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
@@ -129,6 +136,8 @@ Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"
 Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
 Ref: "SalesTable"."SalesId" < "CustTrans"."MCRPaymOrderID"
 Ref: "PurchTable"."PurchId" < "PurchLine"."PurchId"
+Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
+
 
 enum SalesStatus {
     "0 - Brak"
