@@ -26,6 +26,7 @@ Table SalesLine {
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
     CurrencyCode string [note: "3 - znakowy kod waluty"]
     SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
+    inventDimId string
     "(WIDOK) SalesGrossPrice" decimal [note: "Cena brutto na zamówieniu sprzedaży w walucie"]
     "(PBI) Szklenia Per Okno" int [note: "Ilość szkleń dla pojedyńczego okna w wierszu"]
     "(PBI) Szklenia Per Wariant" int [note: "Ilość szkleń dla całego wiersza "]
