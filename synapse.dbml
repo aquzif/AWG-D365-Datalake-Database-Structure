@@ -121,7 +121,7 @@ Table PurchLine {
     ItemId string [note: "Numer artykułu"]
     PurchQty decimal [note: "Ilosć zamówionego artykułu"]
     PriceUnit decimal [note: "Cena per jednostka"]
-    "(PBI) PriceNetto" decimal [note: "Cena netto wiersza "]
+    "(PBI) PriceNetto" decimal [note: "Cena netto wiersza w walucie"]
     note: "Tabela z wierszami zamówienia zakupu"
 }
 
