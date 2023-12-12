@@ -130,6 +130,21 @@ Table TaxGroupHeading {
     note: "Tabela z grupami podatkowymi"
 }
 
+Table ExchangeRateCurrencyPair {
+    RECID int [note: "Identyfikator rekordu"]
+    FromCurrencyCode string [note: "Waluta źródłowa kursu"]
+    ToCurrencyCode string [note: "Waluta docelowa kursu"]
+    ExchangeRateType string [note: "Identyfikator typu kursu"]
+    note: "Tabela z identyfikatoramui parami zmian walutowych"
+}
+
+Table ExchangeRate {
+    ExchangeRateCurrencyPair string [note: "Identyfikator tabeli nadrzędnej"]
+    ValidFrom datetime [note: "Kurs ważny od"]
+    ValidTo datetime [note: "Kurs ważny do"]
+    note: "Tabela z kursami przewalutowań"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
@@ -145,6 +160,7 @@ Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
 Ref: "SalesTable"."SalesId" < "CustTrans"."MCRPaymOrderID"
 Ref: "PurchTable"."PurchId" < "PurchLine"."PurchId"
 Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
+Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPair"
 
 
 enum SalesStatus {
