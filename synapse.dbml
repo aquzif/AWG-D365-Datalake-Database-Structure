@@ -111,11 +111,16 @@ Table CustTrans {
 
 Table PurchTable {
     PurchId string [note: "Numer zamówienia zakupu"]
+    CurrencyCode string [note: "Kod waluty"]
+    
     note: "Tabela z nagłówkami zamówień zakupów"
 }
 
 Table PurchLine {
     PurchId string [note: "Numer zamówienia zakupu"]
+    ItemId string [note: "Numer artykułu"]
+    PurchQty decimal [note: "Ilosć zamówionego artykułu"]
+    PriceUnit decimal [note: "Cena per jednostka"]
     note: "Tabela z wierszami zamówienia zakupu"
 }
 
