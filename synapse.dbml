@@ -142,6 +142,7 @@ Table ExchangeRate {
     ExchangeRateCurrencyPair string [note: "Identyfikator tabeli nadrzędnej"]
     ValidFrom datetime [note: "Kurs ważny od"]
     ValidTo datetime [note: "Kurs ważny do"]
+    ExchangeRate decimal [note: "Kurs waluty `trzeba podzielić przez 100`"]
     note: "Tabela z kursami przewalutowań"
 }
 
