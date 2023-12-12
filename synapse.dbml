@@ -4,6 +4,7 @@ Project Synapse {
   Note: '''
     # Azure Synapse Database for D365
     ### Host: `asatst1-ondemand.sql.azuresynapse.net`
+    ### Editor: [https://github.dev/aquzif/AWG-database-docs](https://github.dev/aquzif/AWG-database-docs)
   '''
 }
 
