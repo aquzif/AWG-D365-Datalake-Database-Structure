@@ -70,6 +70,12 @@ Table CaseDetail {
     note: "Szczegóły sprawy/reklamacji"
 }
 
+Table AngCaseDetailComplaint{
+    AccountNum string [note: "Numer klienta"]
+    IndustryCode string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
+    note: "Tabela uzupełniająca CaseDetails reklamacji"
+}
+
 Table WHSLoadTable{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
     LoadSchedShipUTCDateTime datetime [note: "Data i godzina zaplanowanej wysyłki ładunku"]
