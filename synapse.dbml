@@ -152,7 +152,7 @@ Table AngSalesConfirmations {
     SpecialistConfirmation bit [note: "Wartość 0/1, czy specjalista musi potwierdzić"]
     CustomerConfirmation bit [note: "Wartość 0/1, czy klient musi potwierdzić"]
     AdvanceConfirmation bit [note: "Wartość 0/1, czy musi wpłacić zaliczkę"]
-    AttendantConfirmed bit [note: "Wartość 0/1, czy opiekun musi potwierdzić"]
+    AttendantConfirmation bit [note: "Wartość 0/1, czy opiekun musi potwierdzić"]
     SpecialistConfirmed bit [note: "Wartość 0/1, potwierdzone przez specjalistę/konstruktora?"]
     CustomerConfirmed bit [note: "Wartość 0/1, potwierdzone przez klienta"]
     AdvanceConfirmed bit [note: "Wartość 0/1, czy wpłacona zaliczka"]
