@@ -161,10 +161,10 @@ Table AngSalesConfirmations {
     CustomerConfirmedUser string [note: "Użytkownik który potwierdził klienta"]
     AdvanceConfirmedUser string [note: "Użytkownik który potwierdził zaliczkę"]
     AttendantConfirmedUser string [note: "Użytkownik który potwierdził opiekuna"]
-    SpecialistConfirmedUser string [note: "Data, kiedy zostało potwierdzone przez specjalistę"]
-    CustomerConfirmedUser string [note: "Data, kiedy zostało potwierdzone przez klienta"]
-    AdvanceConfirmedUser string [note: "Data, kiedy została potwierdzona płatność zaliczki"]
-    AttendantConfirmedUser string [note: "Data, kliedy zostało powierdzone przez opiekuna"]
+    SpecialistConfirmedDate datetime [note: "Data, kiedy zostało potwierdzone przez specjalistę"]
+    CustomerConfirmedDate datetime [note: "Data, kiedy zostało potwierdzone przez klienta"]
+    AdvanceConfirmedDate datetime [note: "Data, kiedy została potwierdzona płatność zaliczki"]
+    AttendantConfirmedDate datetime [note: "Data, kliedy zostało powierdzone przez opiekuna"]
     note: "Tabela z potwierdzeniami do zamówienia"
 }
 
