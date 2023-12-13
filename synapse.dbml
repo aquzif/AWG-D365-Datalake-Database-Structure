@@ -147,8 +147,30 @@ Table ExchangeRate {
     note: "Tabela z kursami przewalutowań"
 }
 
+Table AngSalesConfirmations {
+    SalesId string [note: "Numer zamówienia którego dotyczą potwierdzenia"]
+    SpecialistConfirmation bit [note: "Wartość 0/1, czy specjalista musi potwierdzić"]
+    CustomerConfirmation bit [note: "Wartość 0/1, czy klient musi potwierdzić"]
+    AdvanceConfirmation bit [note: "Wartość 0/1, czy musi wpłacić zaliczkę"]
+    AttendantConfirmed bit [note: "Wartość 0/1, czy opiekun musi potwierdzić"]
+    SpecialistConfirmed bit [note: "Wartość 0/1, potwierdzone przez specjalistę/konstruktora?"]
+    CustomerConfirmed bit [note: "Wartość 0/1, potwierdzone przez klienta"]
+    AdvanceConfirmed bit [note: "Wartość 0/1, czy wpłacona zaliczka"]
+    AttendantConfirmed bit [note: "Wartość 0/1, czy potwierdzone przez opiekuna"]
+    SpecialistConfirmedUser string [note: "Użytkownik który potwierdził specjalistę"]
+    CustomerConfirmedUser string [note: "Użytkownik który potwierdził klienta"]
+    AdvanceConfirmedUser string [note: "Użytkownik który potwierdził zaliczkę"]
+    AttendantConfirmedUser string [note: "Użytkownik który potwierdził opiekuna"]
+    SpecialistConfirmedUser string [note: "Data, kiedy zostało potwierdzone przez specjalistę"]
+    CustomerConfirmedUser string [note: "Data, kiedy zostało potwierdzone przez klienta"]
+    AdvanceConfirmedUser string [note: "Data, kiedy została potwierdzona płatność zaliczki"]
+    AttendantConfirmedUser string [note: "Data, kliedy zostało powierdzone przez opiekuna"]
+    note: "Tabela z potwierdzeniami do zamówienia"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
+Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
 Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
 Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
 Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
