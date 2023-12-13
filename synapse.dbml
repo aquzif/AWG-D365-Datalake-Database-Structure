@@ -182,7 +182,7 @@ Table AngSalesConfirmations {
 Table LogisticsPostalAddress {
     RECID int [note: "Identyfikator wiersza"]
     Address string [note: "Adres (w jednej linii, z enterami)"]
-    CountryRegionId [note: "Identyfikator kraju (3-znakowy kod kraju)"]
+    CountryRegionId string [note: "Identyfikator kraju (3-znakowy kod kraju)"]
     City string [note: "Miasto"]
     Latitude decimal [note: "Szerokość geograficzna"]
     Longitude decimal [note: "Wysokość geograficzna"]
