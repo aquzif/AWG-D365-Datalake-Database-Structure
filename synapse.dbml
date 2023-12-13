@@ -18,6 +18,7 @@ Table SalesTable {
     CustAccount string [note: "Numer klienta"]
     SalesName string [note: "Nazwa klienta"]
     SalesStatus SalesStatus [note: "Stan zamówienia"]
+    AngSalesOrderStatus AngSalesOrderStatus [note: "Status zamówienia"]
     TaxGroup string [note: "Kod grupy podatkowej"]
     note: "Tabela z nagłówkami zamówienia"
 }
@@ -199,9 +200,21 @@ enum SalesStatus {
     "2 - Dostarczone"
     "3 - Zafakturowane"
     "4 - Anuloowane"
-    1 [note: "Otwarte"]
-    2 [note: "Dostarczone"]
-    3 [note: "Zafakturowane"]
-    4 [note: "Anuloowane"]
+    // 1 [note: "Otwarte"]
+    // 2 [note: "Dostarczone"]
+    // 3 [note: "Zafakturowane"]
+    // 4 [note: "Anuloowane"]
 }
 
+enum AngSalesOrderStatus {
+    "0 - Przyjęte"
+    "1 - Zarejestrowane"
+    "2 - Korekta"
+    "3 - Przekazane do wyjaśnienia"
+    "4 - Dorabiana technologia"
+    "5 - Wstrzymane przez klienta"
+    "6 - Niespełnione minimum logistyczne"
+    "7 - Wstrzymane przez Dział Windykacji"
+    "8 - Przekracza limit"
+    "9 - Niekompletne"
+}
