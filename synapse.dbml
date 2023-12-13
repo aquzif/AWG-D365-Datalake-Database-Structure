@@ -187,7 +187,7 @@ Table LogisticsPostalAddress {
     Latitude decimal [note: "Szerokość geograficzna"]
     Longitude decimal [note: "Wysokość geograficzna"]
     Street string [note: "Ulica, numer domu itd..."]
-    ZipCode string pnote: "Kod pocztowy"
+    ZipCode string [note: "Kod pocztowy"]
     note: "Tabela z adresami logistycznymi"
 }
 
