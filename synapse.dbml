@@ -179,9 +179,22 @@ Table AngSalesConfirmations {
     note: "Tabela z potwierdzeniami do zamówienia"
 }
 
+Table LogisticsPostalAddress {
+    RECID int [note: "Identyfikator wiersza"]
+    Address string [note: "Adres (w jednej linii, z enterami)"]
+    CountryRegionId [note: "Identyfikator kraju (3-znakowy kod kraju)"]
+    City string [note: "Miasto"]
+    Latitude decimal [note: "Szerokość geograficzna"]
+    Longitude decimal [note: "Wysokość geograficzna"]
+    Street string [note: "Ulica, numer domu itd..."]
+    ZipCode string pnote: "Kod pocztowy"
+    note: "Tabela z adresami logistycznymi"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
+Ref: "SalesTable"."DeliveryPostalAddress" < "LogisticsPostalAddress"."RECID"
 Ref: "SalesLine"."inventDimId" < "InventDim"."inventDimId"  
 Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"  
 Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
