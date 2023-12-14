@@ -20,6 +20,7 @@ Table SalesTable {
     SalesStatus SalesStatus [note: "Stan zamówienia"]
     AngSalesOrderStatus AngSalesOrderStatus [note: "Status zamówienia"]
     TaxGroup string [note: "Kod grupy podatkowej"]
+    DeliveryPostalAddress String 
     note: "Tabela z nagłówkami zamówienia"
 }
 
