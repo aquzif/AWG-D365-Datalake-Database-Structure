@@ -99,7 +99,6 @@ Table ProdTable {
     CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
     ProdGroupId string [note: "Linia produkcyjna"]
     InventRefId string [note: "Numer odwołania"]
-    ProdId string [note: "Numer zlecenia produkcyjnego"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
