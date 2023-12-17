@@ -31,6 +31,7 @@ Table SalesLine {
     CurrencyCode string [note: "3 - znakowy kod waluty"]
     SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
     inventDimId string
+    InventRefId string
     "(WIDOK) SalesGrossPrice" decimal [note: "Cena brutto na zamówieniu sprzedaży w walucie (WIP)"]
     "(PBI) Szklenia Per Okno" int [note: "Ilość szkleń dla pojedyńczego okna w wierszu"]
     "(PBI) Szklenia Per Wariant" int [note: "Ilość szkleń dla całego wiersza "]
@@ -98,6 +99,7 @@ Table ProdTable {
     CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
     ProdGroupId string [note: "Linia produkcyjna"]
     InventRefId string [note: "Numer odwołania"]
+    ProdId string [note: "Numer zlecenia produkcyjnego"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
@@ -211,6 +213,7 @@ Ref: "SalesTable"."SalesId" < "CustTrans"."MCRPaymOrderID"
 Ref: "PurchTable"."PurchId" < "PurchLine"."PurchId"
 Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
 Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPair"
+Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
 
 
 enum SalesStatus {
