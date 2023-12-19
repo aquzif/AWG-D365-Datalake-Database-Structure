@@ -100,6 +100,8 @@ Table ProdTable {
     CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
     ProdGroupId string [note: "Linia produkcyjna"]
     InventRefId string [note: "Numer odwołania"]
+    ProdStatus ProdStatus [note: "Status zlecenia produkcyjnego"]
+    BackorderStatus BackorderStatus [note: "Stan pozostałych"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
@@ -249,4 +251,21 @@ enum SalesType {
     "2 - Zamówienie Sprzedaży"
     "3 - Zwrot towaru"
     "4 - Zapotrzebowanie na pozycje"
+}
+
+enum ProdStatus {
+    "0 - Utworzone"
+    "1 - Oszacowane"
+    "2 - Zaplanowane"
+    "3 - Zwolnione"
+    "4 - Rozpoczęte"
+}
+
+enum BackorderStatus {
+    "0 - (Puste)"
+    "1 - Zużycie materiału"
+    "2 - (nieznane)"
+    "3 - Zgłoszenie MWG"
+    "4 - (nieznane)"
+    "5 - Zakończone"
 }
