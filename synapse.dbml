@@ -17,6 +17,7 @@ Table SalesTable {
     AngQuotationId string [default: "1234567890", note: "Numer oferty z PREF"]
     WorkerSalesResponsible int [note: "ID Osoby odpowiedzialnej za zamówienie"]
     CustAccount string [default: "N012345", note: "Numer klienta"]
+    CustomerRef string [note: "Numer zewnętrzny klienta"]
     SalesName string [ note: "Nazwa klienta"]
     SalesStatus SalesStatus [note: "Stan zamówienia"]
     SalesType SalesType [note: "Typ zamówienia"]
