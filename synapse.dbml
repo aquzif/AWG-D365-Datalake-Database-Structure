@@ -175,6 +175,8 @@ Table AngSalesConfirmations {
     CustomerConfirmedDateTime datetime [note: "Data i godzina, kiedy zostało potwierdzone przez klienta"]
     AdvanceConfirmedDateTime datetime [note: "Data i godzina, kiedy została potwierdzona płatność zaliczki"]
     AttendantConfirmedDateTime datetime [note: "Data i godzina, kliedy zostało powierdzone przez opiekuna"]
+    "(PBI) OrderConfirmedDate" date [note: "Data, kiedy zamówienie spełniło wszystkie warunki podpisania, zostało podpisane"]
+    "(PBI) OrderConfirmed" bit [note: "Czy zamówienie zostało podpisane"]
     "(PBI) SpecialistConfirmedDate" date [note: "Data, kiedy zostało potwierdzone przez specjalistę"]
     "(PBI) CustomerConfirmedDate" date [note: "Data, kiedy zostało potwierdzone przez klienta"]
     "(PBI) AdvanceConfirmedDate" date [note: "Data, kiedy została potwierdzona płatność zaliczki"]
