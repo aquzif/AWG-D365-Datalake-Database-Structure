@@ -42,7 +42,7 @@ Table SalesLine {
 
 Table InventDim {
     inventDimId string
-    configId string
+    configId string 
     note: "Wymiary magazynowe"
 }
 
