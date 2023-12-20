@@ -85,13 +85,13 @@ Table AngCaseDetailComplaint{
 Table WHSLoadTable{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
     LoadSchedShipUTCDateTime datetime [note: "Data i godzina zaplanowanej wysyłki ładunku"]
-    AngPlannedUnloadingDate date [note: "zaplanowana data rozładunku u klienta"]
     note: "Tabela z nagłówkami załadunków"
 }
 
 Table WHSLoadLine{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
     OrderNum string [note: "Numer zamówienia sprzedaży"]
+    AngPlannedUnloadingDate date [note: "zaplanowana data rozładunku u klienta"]
     note: "Tabela z wierszami transportowymi - zamówieniami"
 }
 
