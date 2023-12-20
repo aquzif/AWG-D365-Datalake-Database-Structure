@@ -50,6 +50,7 @@ Table EcoResConfiguration {
     Name string [note: "Nazwa konfiguracji np. N10024/23/0000901-"]
     AngProductCategoryId string [note: "Kategoria produktu"]
     AngGlassesQuantity int [note: "Ilość szklen danej konfiguracji"]
+    AngConfigurationWeight decimal [note: "Waga konfiguracji"]
     note: "Tabela z konfiguracjami wierszy zamówień"
 }
 
