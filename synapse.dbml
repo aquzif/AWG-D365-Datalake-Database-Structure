@@ -37,6 +37,7 @@ Table SalesLine {
     "(WIDOK) SalesGrossPrice" decimal [note: "Cena brutto na zamówieniu sprzedaży w walucie (WIP)"]
     "(PBI) Szklenia Per Okno" int [note: "Ilość szkleń dla pojedyńczego okna w wierszu"]
     "(PBI) Szklenia Per Wariant" int [note: "Ilość szkleń dla całego wiersza "]
+    "(PBI) IsWindow" bit [note: "Czy wiersz jest oknem"]
     note: "Tabela z pozycjami zamówienia"
 }
 
