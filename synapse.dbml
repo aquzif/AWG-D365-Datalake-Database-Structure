@@ -38,6 +38,7 @@ Table SalesLine {
     "(PBI) Szklenia Per Okno" int [note: "Ilość szkleń dla pojedyńczego okna w wierszu"]
     "(PBI) Szklenia Per Wariant" int [note: "Ilość szkleń dla całego wiersza "]
     "(PBI) IsWindow" bit [note: "Czy wiersz jest oknem"]
+    "(WIDOK) WindowsOnMWG" int [note: "Ilość okien zdanych na MWG"]
     note: "Tabela z pozycjami zamówienia"
 }
 
