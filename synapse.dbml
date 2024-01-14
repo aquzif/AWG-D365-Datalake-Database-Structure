@@ -110,6 +110,11 @@ Table ProdTable {
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
+Table DimensionAttributeValueSet {
+    RecId int [note: "Identyfikator rekordu"]
+    note: "Wartości wymiarów"
+}
+
 Table ProdJournalProd {
     AngWindowNumber string [note: "Numer pozycji produkowanej (np. kiedy jest 1, u nas będzie 001)"]
     ProdId string [note: "Numer zlecenia produkcyjnego"]
@@ -223,6 +228,7 @@ Ref: "PurchTable"."PurchId" < "PurchLine"."PurchId"
 Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
 Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPair"
 Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
+Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 
 
 enum SalesStatus {
