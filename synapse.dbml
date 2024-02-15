@@ -108,6 +108,7 @@ Table ProdTable {
     ProdStatus ProdStatus [note: "Status zlecenia produkcyjnego"]
     BackorderStatus BackorderStatus [note: "Stan pozostałych"]
     ItemId string [note: "Materiał produkowany"]
+    DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
