@@ -107,6 +107,7 @@ Table ProdTable {
     InventRefId string [note: "Numer odwołania"]
     ProdStatus ProdStatus [note: "Status zlecenia produkcyjnego"]
     BackorderStatus BackorderStatus [note: "Stan pozostałych"]
+    ItemId string [note: "Materiał produkowany"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
@@ -209,6 +210,11 @@ Table LogisticsPostalAddress {
     note: "Tabela z adresami logistycznymi"
 }
 
+Table InventTable {
+    ItemId string [note: "Kod produktu"]
+    note: "Tabela z prodektami (Kartoteka zapasów)"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
@@ -229,6 +235,7 @@ Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
 Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPair"
 Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
 Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
+Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 
 
 enum SalesStatus {
