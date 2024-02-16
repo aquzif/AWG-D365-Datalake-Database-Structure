@@ -253,9 +253,9 @@ enum SalesStatus {
 }
 
 enum LoadTemplateId {
-    "AWG",
-    "PLANOWANIE",
-    "STD",
+    "AWG"
+    "PLANOWANIE"
+    "STD"
     "{NUMER SPEDYCJI NP. D03233}"
 }
 
