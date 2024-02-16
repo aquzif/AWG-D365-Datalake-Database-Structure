@@ -88,6 +88,7 @@ Table AngCaseDetailComplaint{
 Table WHSLoadTable{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
     LoadSchedShipUTCDateTime datetime [note: "Data i godzina zaplanowanej wysyłki ładunku"]
+    LoadTemplateId LoadTemplateId [note: "Kod Spedytora"]
     note: "Tabela z nagłówkami załadunków"
 }
 
@@ -249,6 +250,13 @@ enum SalesStatus {
     // 2 [note: "Dostarczone"]
     // 3 [note: "Zafakturowane"]
     // 4 [note: "Anuloowane"]
+}
+
+enum LoadTemplateId {
+    "AWG",
+    "PLANOWANIE",
+    "STD",
+    "{NUMER SPEDYCJI NP. D03233}"
 }
 
 enum AngSalesOrderStatus {
