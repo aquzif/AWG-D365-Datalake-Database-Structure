@@ -217,6 +217,16 @@ Table InventTable {
     note: "Tabela z prodektami (Kartoteka zapasów)"
 }
 
+Table BOMTable {
+    BOMId string [note: "Numer BOM'u"]
+    note: "Tabela zawierająca nagłówki BOM'ów"
+}
+
+Table BOM {
+    BOMId string [note: "Numer BOM'u"]
+    note: "Tabela zawierająca wiersze BOM'ów"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
@@ -238,6 +248,7 @@ Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPa
 Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
 Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
+Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 
 
 enum SalesStatus {
