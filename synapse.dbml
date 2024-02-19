@@ -100,7 +100,8 @@ Table WHSLoadLine{
 }
 
 Table ProdTable {
-    DlvDate datetime [note: "Data produkcji"]
+    SchedStart datetime [note: "Data produkcji"]
+    DlvDate datetime [note: "Data dostępności materiału do produkcji"]
     SchedDate datetime [note: "Planowana data zdania"]
     ProdId string [note: "Numer zlecenia produkcyjnego"]
     CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
