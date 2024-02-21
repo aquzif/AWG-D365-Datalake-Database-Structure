@@ -215,6 +215,7 @@ Table LogisticsPostalAddress {
 
 Table InventTable {
     ItemId string [note: "Kod produktu"]
+    Product string
     note: "Tabela z prodektami (Kartoteka zapasów)"
 }
 
@@ -226,6 +227,22 @@ Table BOMTable {
 Table BOM {
     BOMId string [note: "Numer BOM'u"]
     note: "Tabela zawierająca wiersze BOM'ów"
+}
+
+Table EcoResProduct {
+    Recid int [note: "Identyfikator rekordu"]
+    EngChgProductCategoryDetails string
+    note: "Tabela z grupami creatora"
+}
+
+Table EngChgProductCategoryDetails {
+    RecId int [note: "Identyfikator rekordu"]
+    Category string
+}
+
+Table EcoResCategory {
+    RecId int [note: "Identyfikator rekordu"]
+    Name string [note: "Grupa kreatora"]
 }
 
 
@@ -250,6 +267,11 @@ Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
 Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
+
+Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
+Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
+Ref: "EcoResCategory"."RecId" < "BOM"."Category"
+
 
 
 enum SalesStatus {
