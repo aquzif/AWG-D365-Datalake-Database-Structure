@@ -230,7 +230,7 @@ Table BOM {
 }
 
 Table EcoResProduct {
-    Recid int [note: "Identyfikator rekordu"]
+    RecId int [note: "Identyfikator rekordu"]
     EngChgProductCategoryDetails string
     note: "Tabela z grupami creatora"
 }
