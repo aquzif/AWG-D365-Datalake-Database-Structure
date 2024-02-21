@@ -270,7 +270,7 @@ Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
-Ref: "EcoResCategory"."RecId" < "BOM"."Category"
+Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 
 
 
