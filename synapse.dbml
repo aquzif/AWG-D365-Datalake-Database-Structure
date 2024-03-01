@@ -65,6 +65,7 @@ Table DirPartyTable {
 Table CustTable {
     AccountNum string [note: "Numer klienta"]
     SalesDistrictId string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
+    Party string [note: "Identyfikator książki adresowej"]
     note: "Tabela z danymi klientów"
 }
 
@@ -271,6 +272,7 @@ Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
 Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
+Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
 
 
 
