@@ -59,6 +59,7 @@ Table EcoResConfiguration {
 Table DirPartyTable {
     RecId string [note: "ID Osoby"]
     Name string [note: "Nazwa osoby"]
+    LanguageId string [note: "Kod języka"]
     note: "Globalna książka adresowa"
 }
 
@@ -148,6 +149,7 @@ Table PurchLine {
     PurchId string [note: "Numer zamówienia zakupu"]
     ItemId string [note: "Numer artykułu"]
     PurchQty decimal [note: "Ilosć zamówionego artykułu"]
+    RemainPurchPhysical decimal [note: "ilość pozstała do przyjęcia"]
     PriceUnit decimal [note: "Cena per jednostka"]
     "(PBI) PriceNetto" decimal [note: "Cena netto wiersza w walucie"]
     "(PBI) PriceNettoPLN" decimal [note: "Cena netto wiersza w PLN"]
