@@ -83,6 +83,7 @@ Table CaseDetail {
 }
 
 Table AngCaseDetailComplaint{
+    CaseId string [note: "Numer sprawy"]
     AccountNum string [note: "Numer klienta"]
     IndustryCode string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
     note: "Tabela uzupełniająca CaseDetails reklamacji"
@@ -258,6 +259,7 @@ Ref: "EcoResConfiguration"."Name" < "InventDim"."configId"
 Ref: "SalesTable"."WorkerSalesResponsible" < "DirPartyTable"."RecId"  
 Ref: "SalesTable"."CustAccount" < "CustTable"."AccountNum"  
 Ref: "CaseDetailBase"."CaseId" < "CaseDetail"."CaseId"
+Ref: "AngCaseDetailComplaint"."CaseId" < "CaseDetail"."CaseId"
 Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId" 
 Ref: "SalesTable"."SalesId" - "WHSLoadLine"."OrderNum"
 Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
