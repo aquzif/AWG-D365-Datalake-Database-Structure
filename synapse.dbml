@@ -145,6 +145,7 @@ Table CustTrans {
 Table PurchTable {
     PurchId string [note: "Numer zamówienia zakupu"]
     CurrencyCode string [note: "Kod waluty"]
+    DeliveryDate date [note: "Żadana data dostawy"]
     "(WIDOK) ExchangeRate" string [note: "Kurs waluty zastosowany do zamówienia"]
     note: "Tabela z nagłówkami zamówień zakupów"
 }
