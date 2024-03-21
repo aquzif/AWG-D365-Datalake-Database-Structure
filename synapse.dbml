@@ -24,6 +24,7 @@ Table SalesTable {
     AngSalesOrderStatus AngSalesOrderStatus [note: "Status zamówienia"]
     TaxGroup string [note: "Kod grupy podatkowej"]
     DeliveryPostalAddress String 
+    AngRelatedOrdersId string [note: "numer kompletu (zamówienień powiązanych ze sobą)"]
     note: "Tabela z nagłówkami zamówienia"
 }
 
