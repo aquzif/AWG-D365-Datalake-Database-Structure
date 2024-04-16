@@ -69,6 +69,7 @@ Table CustTable {
     SalesDistrictId string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
     Party string [note: "Identyfikator książki adresowej"]
     Currency string [note: "Kod waluty klienta"]
+    AngStatus CustStatus [note: "Status klienta"]
     note: "Tabela z danymi klientów"
 }
 
@@ -286,6 +287,17 @@ Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
 
 
+enum CustStatus {
+    "0 - Prospekt"
+    "1 - Nowy"
+    "2 - Aktywny"
+    "3 - Nieaktywny"
+    "4 - Nie istnieje"
+    "5 - Windykacja"
+    "6 - Brak kontaktu"
+    "7 - Sąd"
+    "8 - Zablokowany"
+}
 
 enum SalesStatus {
     "0 - Brak"
