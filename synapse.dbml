@@ -256,6 +256,8 @@ Table LogisticsPostalAddress {
     Longitude decimal [note: "Wysokość geograficzna"]
     Street string [note: "Ulica, numer domu itd..."]
     ZipCode string [note: "Kod pocztowy"]
+    AngLogMin decimal [note: "Wartość minimum logistycznego"]
+    AngDeliveryCost decimal [note: "Koszt dostawy"]
     note: "Tabela z adresami logistycznymi"
 }
 
