@@ -317,7 +317,7 @@ Ref: "CustTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 Ref: "HCMWorker"."RecID" - "CustTable"."maincontactworker"
-Ref: "HCMWorker"."Person" - "DirPartyTable"."Recid"
+Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
