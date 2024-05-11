@@ -71,6 +71,7 @@ Table CustTable {
     Currency string [note: "Kod waluty klienta"]
     AngStatus CustStatus [note: "Status klienta"]
     DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
+    MainContractWorker int [note: "Idnetyfikator Pracowniak etatowego odpowiedzialnego"]
     note: "Tabela z danymi klientów"
 }
 
@@ -153,6 +154,12 @@ Table DimensionAttributeValueSet {
     leasingvalue string [note: "Wartość wymiaru Leasing"]
 
     note: "Wartości wymiarów"
+}
+
+Table HCMWorker {
+    RecID int [note: "Identyfikator pracownika"]
+    Person int [note: "Idnetyfikator osoby"]
+    note: "Tabela z pracownikami firmy"
 }
 
 Table ProdJournalProd {
@@ -309,6 +316,8 @@ Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "CustTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
+Ref: "HCMWorker"."RecID" - "CustTable"."maincontactworker"
+Ref: "HCMWorker"."Person" - "DirPartyTable"."Recid"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
