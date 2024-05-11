@@ -61,7 +61,7 @@ Table DirPartyTable {
     RecId string [note: "ID Osoby"]
     Name string [note: "Nazwa osoby"]
     LanguageId string [note: "Kod języka"]
-    PrimaryContactEmail [note: "Identyfikator głównego adresu email"]
+    PrimaryContactEmail int [note: "Identyfikator głównego adresu email"]
     note: "Globalna książka adresowa"
 }
 
