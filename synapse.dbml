@@ -71,7 +71,7 @@ Table CustTable {
     Currency string [note: "Kod waluty klienta"]
     AngStatus CustStatus [note: "Status klienta"]
     DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
-    MainContractWorker int [note: "Idnetyfikator Pracowniak etatowego odpowiedzialnego"]
+    MainContactWorker int [note: "Idnetyfikator Pracowniak etatowego odpowiedzialnego"]
     note: "Tabela z danymi klientów"
 }
 
@@ -316,7 +316,7 @@ Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "CustTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
-Ref: "HCMWorker"."RecID" - "CustTable"."maincontactworker"
+Ref: "HCMWorker"."RecID" - "CustTable"."MainContactWorker"
 Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
