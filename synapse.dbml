@@ -61,6 +61,7 @@ Table DirPartyTable {
     RecId string [note: "ID Osoby"]
     Name string [note: "Nazwa osoby"]
     LanguageId string [note: "Kod języka"]
+    PrimaryContactEmail [note: "Identyfikator głównego adresu email"]
     note: "Globalna książka adresowa"
 }
 
@@ -258,6 +259,13 @@ Table LogisticsPostalAddress {
     note: "Tabela z adresami logistycznymi"
 }
 
+Table LogisticsElectronicAddress{
+    RecID int [note: "Identyfikator adresu elektronicznego"]
+    locator string [note: "adres email/telefon kontaktowy"]
+    type LogisticsElectronicAddressType [note: "Typ adresu"]
+    note: "Tabela z danymi kontaktowymi"
+}
+
 Table InventTable {
     ItemId string [note: "Kod produktu"]
     Product string
@@ -323,6 +331,7 @@ Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
 Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
+Ref: "DirPartyTable"."PrimaryContactEmail" - "LogisticsElectronicAddress"."RecID"
 
 
 enum CustStatus {
@@ -392,4 +401,10 @@ enum BackorderStatus {
     "3 - Zgłoszenie MWG"
     "4 - (nieznane)"
     "5 - Zakończone"
+}
+
+enum LogisticsElectronicAddress {
+    "1 - Telefon kontaktowy"
+    "2 - Adres Email"
+    "9 - Telefon kontaktowy"
 }
