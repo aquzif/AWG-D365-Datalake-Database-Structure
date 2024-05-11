@@ -70,6 +70,7 @@ Table CustTable {
     Party string [note: "Identyfikator książki adresowej"]
     Currency string [note: "Kod waluty klienta"]
     AngStatus CustStatus [note: "Status klienta"]
+    DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
     note: "Tabela z danymi klientów"
 }
 
@@ -124,6 +125,33 @@ Table ProdTable {
 
 Table DimensionAttributeValueSet {
     RecId int [note: "Identyfikator rekordu"]
+    budzet int [note: "Identyfikator wymiaru budżet"]
+    budzetvalue string [note: "Wartość wymiaru budżet"]
+    cit int [note: "Identyfikator wymiaru CIT"]
+    citvalue string [note: "Wartość wymiaru CIT"]
+    dostawca int [note: "Identyfikator wymiaru Dostawca"]
+    dostawcavalue string [note: "Wartość wymiaru Dostawca"]
+    grupa_towarowa int [note: "Identyfikator wymiaru Grupa Towarowa"]
+    grupa_towarowavalue string [note: "Wartość wymiaru Grupa Towarowa"]
+    handlowiec int [note: "Identyfikator wymiaru Handlowiec"]
+    handlowiecvalue string [note: "Wartość wymiaru Handlowiec"]
+    mpk int [note: "Identyfikator wymiaru MPK"]
+    mpkvalue string [note: "Wartość wymiaru MPK"]
+    odbiorca int [note: "Identyfikator wymiaru Odbiorca"]
+    odbiorcavalue string [note: "Wartość wymiaru Odbiorca"]
+    produkcja int [note: "Identyfikator wymiaru Produkcja"]
+    produkcjavalue string [note: "Wartość wymiaru Produkcja"]
+    sekcja int [note: "Identyfikator wymiaru Sekcja"]
+    sekcjavalue string [note: "Wartość wymiaru Sekcja"]
+    st int [note: "Identyfikator wymiaru ST"]
+    stvalue string [note: "Wartość wymiaru ST"]
+    zezwolenie_decyzja int [note: "Identyfikator wymiaru Produkcja"]
+    zezwolenie_decyzjavalue string [note: "Wartość wymiaru Zezwolenie Decyzja"]
+    strefa int [note: "Identyfikator wymiaru Strefa"]
+    strefavalue string [note: "Wartość wymiaru Strefa"]
+    leasing int [note: "Identyfikator wymiaru Leasing"]
+    leasingvalue string [note: "Wartość wymiaru Leasing"]
+
     note: "Wartości wymiarów"
 }
 
@@ -278,6 +306,7 @@ Ref: "SalesTable"."TaxGroup" < "TaxGroupHeading"."TaxGroup"
 Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPair"
 Ref: "SalesLine"."InventRefId" < "ProdTable"."ProdId"
 Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
+Ref: "CustTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 
