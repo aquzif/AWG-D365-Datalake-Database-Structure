@@ -268,6 +268,13 @@ Table LogisticsElectronicAddress{
     note: "Tabela z danymi kontaktowymi"
 }
 
+Table VendTable{
+    AccountNum string [note: "Numer kartoteki"]
+    Party string [note: "Identyfikator książki adresowej"]
+
+    note: "Kartoteka dostawców"
+}
+
 Table InventTable {
     ItemId string [note: "Kod produktu"]
     Product string
@@ -328,6 +335,7 @@ Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 Ref: "HCMWorker"."RecID" - "CustTable"."MainContactWorker"
 Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
+Ref: "VendTable"."Party" - "DirPartyTable"."RecId"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
