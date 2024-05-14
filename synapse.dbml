@@ -285,17 +285,31 @@ Table InventTable {
 
 Table BOMTable {
     BOMId string [note: "Identyfikator BOM'u"]
+    Name string [note: "Nazwa BOM'u"]
     note: "Tabela zawierająca nagłówki BOM'ów"
 }
 
 Table BOMVersion {
     BOMId string [note: "Identyfikator BOM'u"]
+    Active bit [note: "Czy ta wersja BOM jest aktywna"]
+    Approved bit [note: "Czy ta wersja BOM jest zatwierdzony"]
+    ItemId string [note: "Identyfikator produktu"]
+    Name string [note: "Nazwa wersji"]
+    UnitId string [note: "Jednostka produktu"]
+
     note: "Tabela z wersjami BOM'u"
 }
 
 Table BOM {
     BOMId string [note: "Identyfikator BOM'u"]
-    note: "Tabela zawierająca wiersze BOM'ów"
+    ItemId string [note: "Identyfikator materiału"]
+    BOMQty decimal [note: "Ilosć Materiału w serii"]
+    BOMQtySerie decimal [note: "Ilość w serii"]
+    FromDate date [note: "Data od kiedy BOM jest aktywny"]
+    ToDate date [note: "Data do kiedy BOM jest aktywny"]
+    UnitId string [note: "Jednostka materiału"]
+    LineNum int [note: "Numer wiersza"]
+    note: "Tabela zawierająca wiersze/materiały BOM'ów"
 }
 
 Table EcoResProduct {
@@ -306,7 +320,7 @@ Table EcoResProduct {
 
 Table EngChgProductCategoryDetails {
     RecId int [note: "Identyfikator rekordu"]
-    Category string
+    Category string 
 }
 
 Table EcoResCategory {
@@ -343,6 +357,8 @@ Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 Ref: "BOMTable"."BOMId" < "BOMVersion"."BOMId"
 Ref: "BOMVersion"."BOMId" < "BOM"."BOMId"
+Ref: "BOMVersion"."ItemId" > "InventTable"."ItemId"
+Ref: "BOM"."ItemId" > "InventTable"."ItemId"
 Ref: "HCMWorker"."RecID" - "CustTable"."MainContactWorker"
 Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
 Ref: "VendTable"."Party" - "DirPartyTable"."RecId"
