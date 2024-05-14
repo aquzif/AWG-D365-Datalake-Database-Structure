@@ -30,6 +30,7 @@ Table SalesTable {
 
 Table SalesLine {
     SalesId string [note: "Numer zamówienia sprzedaży"]
+    LineNum int [note: "Numer wiersza"]
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
     CurrencyCode string [note: "3 - znakowy kod waluty"]
     SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
@@ -106,6 +107,7 @@ Table WHSLoadTable{
 Table WHSLoadLine{
     LoadId string [note: "Identfikator załadunku (z TMS)"]
     OrderNum string [note: "Numer zamówienia sprzedaży"]
+    ANGSOLineNumber decimal [note: "Numer wiersza zamówienia"]
     AngPlannedUnloadingDate date [note: "zaplanowana data rozładunku u klienta"]
     note: "Tabela z wierszami transportowymi - zamówieniami"
 }
@@ -320,7 +322,8 @@ Ref: "AngCaseDetailComplaint"."CaseId" < "CaseDetail"."CaseId"
 Ref: "AngCaseDetailComplaint"."SalesOrder" < "SalesTable"."SalesId"
 Ref: "AngCaseDetailComplaint"."ClosedSalesOrder" < "SalesTable"."SalesId"
 Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId" 
-Ref: "SalesTable"."SalesId" - "WHSLoadLine"."OrderNum"
+Ref: "SalesLine"."SalesId" - "WHSLoadLine"."OrderNum"
+Ref: "SalesLine"."LineNum" - "WHSLoadLine"."ANGSOLineNumber"
 Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
 Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"  
 Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
