@@ -116,6 +116,7 @@ Table ProdTable {
     SchedStart datetime [note: "Data produkcji"]
     SchedDate datetime [note: "Planowana data zdania"]
     DlvDate datetime [note: "Data dostępności materiału do produkcji"]
+    QtySched decimal [note: "Ilość zaplanowana"]
     ProdId string [note: "Numer zlecenia produkcyjnego"]
     CollectRefProdId string [note: "Numer zlecenia produkcyjnego z którego zostało utworzone"]
     ProdGroupId string [note: "Linia produkcyjna"]
