@@ -24,6 +24,7 @@ Table SalesTable {
     AngSalesOrderStatus AngSalesOrderStatus [note: "Status zamówienia"]
     TaxGroup string [note: "Kod grupy podatkowej"]
     DeliveryPostalAddress String 
+    DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
     AngRelatedOrdersId string [note: "numer kompletu (zamówienień powiązanych ze sobą)"]
     note: "Tabela z nagłówkami zamówienia"
 }
@@ -354,6 +355,7 @@ Ref: "ExchangeRateCurrencyPair"."RECID" < "ExchangeRate"."ExchangeRateCurrencyPa
 Ref: "InventDim"."configId" < "ProdTable"."ProdId"
 Ref: "ProdTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "CustTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
+Ref: "SalesTable"."DefaultDimension" - "DimensionAttributeValueSet"."RecId"
 Ref: "ProdTable"."ItemId" - "InventTable"."ItemId"
 Ref: "BOMTable"."BOMId" < "BOM"."BOMId"
 Ref: "BOMTable"."BOMId" < "BOMVersion"."BOMId"
