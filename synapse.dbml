@@ -188,6 +188,7 @@ Table PurchTable {
     PurchId string [note: "Numer zamówienia zakupu"]
     CurrencyCode string [note: "Kod waluty"]
     DeliveryDate date [note: "Żadana data dostawy"]
+    OrderAccount string [note: "Konto Dostawcy"]
     "(WIDOK) ExchangeRate" string [note: "Kurs waluty zastosowany do zamówienia"]
     note: "Tabela z nagłówkami zamówień zakupów"
 }
