@@ -350,7 +350,7 @@ Table InventTransferLine {
     QtyTransfer decimal [note: "Ilość do przeniesienia"]
     QtyShipped decimal [note: "Ilość wysłana"]
     QtyRemainShip decimal [note: "Ilość pozostała do wysłania"]
-    QtyShipped decimal [note: "Ilość przyjęta"]
+    QtyReceived decimal [note: "Ilość przyjęta"]
     note: "Tabela z wierszami zamówień przeniesienia"
 }
 
