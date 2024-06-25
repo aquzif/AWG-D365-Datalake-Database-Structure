@@ -332,7 +332,7 @@ Table EcoResCategory {
 }
 
 Table InventTransferTable {
-    transferid string [note: "Identyfikator zamówienia przeniesienia"]
+    TransferId string [note: "Identyfikator zamówienia przeniesienia"]
     InventLocationIdFrom string [note: "Magazyn źródłowy"]
     InventLocationIdTo string [note: "Magazyn docelowy"]
     ShipDate datetime [note: "Data wysyłki"]
@@ -340,6 +340,18 @@ Table InventTransferTable {
     TransferStatus TransferStatus [note: "Stan przeniesienia"]
     AngSupplement bit [note: "Czy to jest dobranie"]
     note: "Tabela z nagłówkami zamówień przeniesienia"
+}
+
+Table InventTransferLine {
+    TransferId string [note: "Identyfikator zamówienia przeniesienia"]
+    ShipDate datetime [note: "Data wysyłki"]
+    ReceiveDate datetime [note: "Data przyjęcia"]
+    ItemId string [note: "Kod materiału"]
+    QtyTransfer decimal [note: "Ilość do przeniesienia"]
+    QtyShipped decimal [note: "Ilość wysłana"]
+    QtyRemainShip decimal [note: "Ilość pozostała do wysłania"]
+    QtyShipped decimal [note: "Ilość przyjęta"]
+    note: "Tabela z wierszami zamówień przeniesienia"
 }
 
 
@@ -377,6 +389,7 @@ Ref: "BOM"."ItemId" > "InventTable"."ItemId"
 Ref: "HCMWorker"."RecID" - "CustTable"."MainContactWorker"
 Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
 Ref: "VendTable"."Party" - "DirPartyTable"."RecId"
+Ref: "InventTransferTable"."TransferId" < "InventTransferLine"."TransferId"
 
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
