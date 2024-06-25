@@ -331,6 +331,17 @@ Table EcoResCategory {
     Name string [note: "Grupa kreatora"]
 }
 
+Table InventTransferTable {
+    transferid string [note: "Identyfikator zamówienia przeniesienia"]
+    InventLocationIdFrom string [note: "Magazyn źródłowy"]
+    InventLocationIdTo string [note: "Magazyn docelowy"]
+    ShipDate datetime [note: "Data wysyłki"]
+    ReceiveDate datetime [note: "Data przyjęcia"]
+    TransferStatus TransferStatus [note: "Stan przeniesienia"]
+    AngSupplement bit [note: "Czy to jest dobranie"]
+    note: "Tabela z nagłówkami zamówień przeniesienia"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
@@ -373,6 +384,12 @@ Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
 Ref: "DirPartyTable"."PrimaryContactEmail" - "LogisticsElectronicAddress"."RecID"
 
+
+enum TransferStatus {
+    "0 - Utworzone"
+    "1 - Wysłano"
+    "2 - Otrzymane"
+}
 
 enum CustStatus {
     "0 - Prospekt"
