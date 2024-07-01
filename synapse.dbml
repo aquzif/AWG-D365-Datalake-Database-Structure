@@ -282,7 +282,7 @@ Table VendTable{
 
 Table InventTable {
     ItemId string [note: "Kod produktu"]
-    Product string
+    Product string [note: "Identyfikator produktu"]
     note: "Tabela z prodektami (Kartoteka zapasów)"
 }
 
@@ -360,6 +360,21 @@ Table AngRelatedOrders {
     note: "Tabela z kompletami (powiązanymi zamówieniami sprzedaży)"
 }
 
+Table EcoResProductTranslation {
+    Product string [note: "Identyfikator produktu"]
+    LanguageID string [note: "2-znakowy kod języka (pl,en itd...)"]
+    Description string [note: "Opis tłumaczenia"]
+    Name string [note: "Tłumaczenie produktu"]
+    note: "Tabela z tłumaczeniami do produktów"
+}
+
+Table InventItemPurchSetup {
+    ItemId string [note: "Kod materiału"]
+    LowestQty decimal [note: "Mnożnik"]
+    LeadTime decimal [note: "Cykl materiału"]
+    note: "Ustawienia zakupowe produktów"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
@@ -403,6 +418,8 @@ Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
 Ref: "DirPartyTable"."PrimaryContactEmail" - "LogisticsElectronicAddress"."RecID"
 Ref: "SalesTable"."SalesId" - "AngRelatedOrders"."SalesId"
+Ref: "InventItemPurchSetup"."ItemId" - "InventTable"."ItemId"
+Ref: "EcoResProductTranslation"."Product" > "InventTable"."Product"
 
 
 enum TransferStatus {
