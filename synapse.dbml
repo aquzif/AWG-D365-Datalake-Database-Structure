@@ -354,6 +354,12 @@ Table InventTransferLine {
     note: "Tabela z wierszami zamówień przeniesienia"
 }
 
+Table AngRelatedOrders {
+    RelatedOrdersId string [note: "Identyfikator danego kompletu. Wszystkie inne zamówienia sprzedaży z takim samym identyfikatorem będą powiązane"]
+    SalesId string [note: "Numer powiązanego zamówienia sprzedaży"]
+    note: "Tabela z kompletami (powiązanymi zamówieniami sprzedaży)"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
@@ -396,6 +402,7 @@ Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDeta
 Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
 Ref: "CustTable"."Party" - "DirPartyTable"."RecId"
 Ref: "DirPartyTable"."PrimaryContactEmail" - "LogisticsElectronicAddress"."RecID"
+Ref: "SalesTable"."SalesId" - "AngRelatedOrders"."SalesId"
 
 
 enum TransferStatus {
