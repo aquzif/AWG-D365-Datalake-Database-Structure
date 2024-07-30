@@ -35,6 +35,7 @@ Table SalesLine {
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
     CurrencyCode string [note: "3 - znakowy kod waluty"]
     SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
+    InventTransID string [note: "Identyfikator transportu"]
     inventDimId string
     InventRefId string
     "(WIDOK) SalesGrossPrice" decimal [note: "Cena brutto na zamówieniu sprzedaży w walucie (WIP)"]
@@ -110,6 +111,7 @@ Table WHSLoadLine{
     OrderNum string [note: "Numer zamówienia sprzedaży"]
     ANGSOLineNumber decimal [note: "Numer wiersza zamówienia"]
     AngPlannedUnloadingDate date [note: "zaplanowana data rozładunku u klienta"]
+    InventTransID string [note: "Identyfikator transportu"]
     note: "Tabela z wierszami transportowymi - zamówieniami"
 }
 
@@ -390,6 +392,7 @@ Ref: "AngCaseDetailComplaint"."ClosedSalesOrder" < "SalesTable"."SalesId"
 Ref: "WHSLoadTable"."LoadId" < "WHSLoadLine"."LoadId" 
 Ref: "SalesLine"."SalesId" - "WHSLoadLine"."OrderNum"
 Ref: "SalesLine"."LineNum" - "WHSLoadLine"."ANGSOLineNumber"
+Ref: "WHSLoadLine"."InventTransID" - "SalesLine"."InventTransID"
 Ref: "ProdTable"."ProdId" < "ProdJournalProd"."ProdId"
 Ref: "EcoResConfiguration"."Name" < "ProdTable"."ProdId"  
 Ref: "ProdJournalTable"."JournalId" < "ProdJournalProd"."JournalId"
