@@ -377,6 +377,18 @@ Table InventItemPurchSetup {
     note: "Ustawienia zakupowe produktów"
 }
 
+Table CustInvoiceJour {
+    InvoiceId string [note: "Numer faktury"]
+    InvoiceAccount string [note: "Numer klienta"]
+    SalesId string [note: "Numer zamówienia"]
+    InvoiceAmount decimal [note: "Kwota faktury"]
+    InvoiceDate date [note: "Data faktury (nie jest dokładnie opisane)"]
+    DocumentDate date [note: "Data dokumentu"]
+    DueDate date [note: "Data płatności"]
+    
+    note: "Tabela z fakturami klientów"
+}
+
 
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
