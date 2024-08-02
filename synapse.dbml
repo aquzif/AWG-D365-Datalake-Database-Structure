@@ -389,7 +389,6 @@ Table CustInvoiceJour {
     note: "Tabela z fakturami klientów"
 }
 
-
 Ref: "SalesTable"."SalesId" < "SalesLine"."SalesId"
 Ref: "SalesTable"."SalesId" - "AngSalesConfirmations"."SalesId"
 Ref: "SalesTable"."DeliveryPostalAddress" < "LogisticsPostalAddress"."RECID"
@@ -435,7 +434,8 @@ Ref: "DirPartyTable"."PrimaryContactEmail" - "LogisticsElectronicAddress"."RecID
 Ref: "SalesTable"."SalesId" - "AngRelatedOrders"."SalesId"
 Ref: "InventItemPurchSetup"."ItemId" - "InventTable"."ItemId"
 Ref: "EcoResProductTranslation"."Product" > "InventTable"."Product"
-
+Ref: "SalesTable"."SalesId" < "CustInvoiceJour"."SalesId"
+Ref: "CustTable"."AccountNum" < "CustInvoiceJour"."InvoiceAccount"
 
 enum TransferStatus {
     "0 - Utworzone"
