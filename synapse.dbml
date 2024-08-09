@@ -458,7 +458,7 @@ Ref: "InventItemPurchSetup"."ItemId" - "InventTable"."ItemId"
 Ref: "EcoResProductTranslation"."Product" > "InventTable"."Product"
 Ref: "SalesTable"."SalesId" < "CustInvoiceJour"."SalesId"
 Ref: "CustTable"."AccountNum" < "CustInvoiceJour"."InvoiceAccount"
-Ref: "DirPartyLocation"."Party" - "DirPartyTable"."RECID"
+Ref: "DirPartyLocation"."Party" - "DirPartyTable"."RecId"
 Ref: "LogisticsLocation"."RECID" - "DirPartyLocation"."Location"
 Ref: "DirPartyLocation"."RECID" - "LogisticsPostalAddress"."Location"
 
