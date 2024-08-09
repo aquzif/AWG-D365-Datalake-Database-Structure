@@ -71,6 +71,7 @@ Table DirPartyTable {
 Table DirPartyLocation {
     RecId string [note: "Identyfikator rekordu"]
     Party string [note: "Identyfikator książki adresowej"]
+    Location string
 }
 
 Table LogisticsLocation {
