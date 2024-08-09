@@ -68,6 +68,16 @@ Table DirPartyTable {
     note: "Globalna książka adresowa"
 }
 
+Table DirPartyLocation {
+    RecId string [note: "Identyfikator rekordu"]
+    Party string [note: "Identyfikator książki adresowej"]
+}
+
+Table LogisticsLocation {
+    RecId string [note: "Identyfikator rekordu"]
+
+}
+
 Table CustTable {
     AccountNum string [note: "Numer kartoteki klienta"]
     SalesDistrictId string [note: "Grupa klienta np. GRUPA 1, GRUPA 2 itd."]
@@ -258,11 +268,13 @@ Table LogisticsPostalAddress {
     RECID int [note: "Identyfikator wiersza"]
     Address string [note: "Adres (w jednej linii, z enterami)"]
     CountryRegionId string [note: "Identyfikator kraju (3-znakowy kod kraju)"]
+    Location string
     City string [note: "Miasto"]
     Latitude decimal [note: "Szerokość geograficzna"]
     Longitude decimal [note: "Wysokość geograficzna"]
     Street string [note: "Ulica, numer domu itd..."]
     ZipCode string [note: "Kod pocztowy"]
+    IsPrimary string [note: "Determines if address if primary"]
     AngLogMin decimal [note: "Wartość minimum logistycznego"]
     AngDeliveryCost decimal [note: "Koszt dostawy"]
     note: "Tabela z adresami logistycznymi"
@@ -435,7 +447,6 @@ Ref: "HCMWorker"."RecID" - "CustTable"."MainContactWorker"
 Ref: "HCMWorker"."Person" - "DirPartyTable"."RecId"
 Ref: "VendTable"."Party" - "DirPartyTable"."RecId"
 Ref: "InventTransferTable"."TransferId" < "InventTransferLine"."TransferId"
-
 Ref: "EcoResProduct"."RecId" - "InventTable"."Product"
 Ref: "EcoResProduct"."EngChgProductCategoryDetails" - "EngChgProductCategoryDetails"."RecId"
 Ref: "EcoResCategory"."RecId" - "EngChgProductCategoryDetails"."Category"
@@ -446,6 +457,10 @@ Ref: "InventItemPurchSetup"."ItemId" - "InventTable"."ItemId"
 Ref: "EcoResProductTranslation"."Product" > "InventTable"."Product"
 Ref: "SalesTable"."SalesId" < "CustInvoiceJour"."SalesId"
 Ref: "CustTable"."AccountNum" < "CustInvoiceJour"."InvoiceAccount"
+Ref: "DirPartyLocation"."Party" - "DirPartyTable"."RECID"
+Ref: "LogisticsLocation"."RECID" - "DirPartyLocation"."Location"
+Ref: "DirPartyLocation"."RECID" - "LogisticsPostalAddress"."Location"
+
 
 enum TransferStatus {
     "0 - Utworzone"
