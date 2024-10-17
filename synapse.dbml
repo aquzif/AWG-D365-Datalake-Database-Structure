@@ -34,7 +34,7 @@ Table SalesLine {
     LineNum int [note: "Numer wiersza"]
     SalesQty int [note: "Ilość na zamówieniu sprzedaży"]
     CurrencyCode string [note: "3 - znakowy kod waluty"]
-    SalesPrice decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
+    LineAmount decimal [note: "Cena netto na zamówieniu sprzedaży w walucie"]
     InventTransID string [note: "Identyfikator transportu"]
     inventDimId string
     InventRefId string
