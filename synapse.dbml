@@ -9,7 +9,12 @@ Project Synapse {
 }
 
 
-
+Table InventItemPurchSetup {
+    ItemId string [note: "Kod materialu"]
+    multipleqty decimal [note: "Mnożnik, ilość przez którą musi się mnożyć zamówienie (laga, karton, paleta itp)"]
+    lowestqty decimal [note: "najmniejsza sztuka materiału (w Naszym przypadku np. długość pojedyńczej lagi)"]
+    leadtime int [note: "cykl materiału"]
+}
 
 Table SalesTable {
     SalesId string [default: "N012345/23/000001",note: "Numer zamówienia sprzedaży"]
