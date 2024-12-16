@@ -144,6 +144,7 @@ Table ProdTable {
     BackorderStatus BackorderStatus [note: "Stan pozostałych"]
     ItemId string [note: "Materiał produkowany"]
     DefaultDimension int [note: "Id domyślnych wymiarów księgowych"]
+    AngProdTime decimal [note: "Roboczogodziny"]
     note: "Tabela ze zleceniami produkcyjnymi"
 }
 
