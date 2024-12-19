@@ -14,6 +14,11 @@ Table InventItemPurchSetup {
     multipleqty decimal [note: "Mnożnik, ilość przez którą musi się mnożyć zamówienie (laga, karton, paleta itp)"]
     lowestqty decimal [note: "najmniejsza sztuka materiału (w Naszym przypadku np. długość pojedyńczej lagi)"]
     leadtime int [note: "cykl materiału"]
+    //ItemId string [note: "Kod materiału"]
+    //LowestQty decimal [note: "Mnożnik"]
+    //LeadTime decimal [note: "Cykl materiału"]
+    //note: "Ustawienia zakupowe produktów"
+    note: "Ustawienia zakupowe produktów"
 }
 
 Table SalesTable {
@@ -389,12 +394,7 @@ Table EcoResProductTranslation {
     note: "Tabela z tłumaczeniami do produktów"
 }
 
-Table InventItemPurchSetup {
-    ItemId string [note: "Kod materiału"]
-    LowestQty decimal [note: "Mnożnik"]
-    LeadTime decimal [note: "Cykl materiału"]
-    note: "Ustawienia zakupowe produktów"
-}
+
 
 Table CustInvoiceJour {
     RecId int [note: "Identyfikator rekordu"]
