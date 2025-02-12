@@ -8,6 +8,23 @@ Project Synapse {
   '''
 }
 
+Table InventTrans {
+    RecID int [note: "Identyfikator rekordu"]
+    ItemId string [note: "Kod Materiału"]
+    DatePhysical date [note:"Data fizycznej transakcji"]
+    DateFinancial date [note: "Data finansowa"]
+    InventTransOrigin int [note: "Odnośnik do tabeli z informacjami"]
+    StatusReceipt ITStatusReceipt [note: "Status przychodu"]
+    StatusIssue ITStatusIssue [note: "Status rozchodu"]
+    note: "Tabela z transakcjami magazynowymi"
+}
+
+Table InventTransOrigin {
+    RecID int [note: "Identyfikator rekordu"]
+    ReferenceCategory ITORefCat [note: "Kategoria odwołania"]
+    ReferenceId string [note: "Wartość (numer) odwołania"]
+    note: "Tabela z informacjami o transakcji magazynowej?"
+}
 
 Table InventItemPurchSetup {
     ItemId string [note: "Kod materialu"]
@@ -222,7 +239,8 @@ Table PurchLine {
     ItemId string [note: "Numer artykułu"]
     PurchQty decimal [note: "Ilosć zamówionego artykułu"]
     RemainPurchPhysical decimal [note: "ilość pozstała do przyjęcia"]
-    PriceUnit decimal [note: "Cena per jednostka"]
+    PurchPrice decimal [note: "Cena per jednostka"]
+    LineAmount decimal [note: "Wartość linii (praktycznie PurchPrice * PurchQty)"]
     "(PBI) PriceNetto" decimal [note: "Cena netto wiersza w walucie"]
     "(PBI) PriceNettoPLN" decimal [note: "Cena netto wiersza w PLN"]
     note: "Tabela z wierszami zamówienia zakupu"
@@ -467,7 +485,71 @@ Ref: "CustTable"."AccountNum" < "CustInvoiceJour"."InvoiceAccount"
 Ref: "DirPartyLocation"."Party" - "DirPartyTable"."RecId"
 Ref: "LogisticsLocation"."RecId" - "DirPartyLocation"."Location"
 Ref: "DirPartyLocation"."RecId" - "LogisticsPostalAddress"."Location"
+Ref: "InventTrans"."InventTransOrigin" - "InventTransOrigin"."RECID"
 
+
+
+enum ITStatusReceipt {
+    "0 - "
+    "1 - Zakupione"
+    "2 - Otrzymane"
+    "3 - Zarejestrowane"
+    "4 - Dostarczone"
+    "5 - Zamówione"
+    "6 - Otrzymanie oferty"
+}
+
+enum ITStatusIssue {
+    "0 - "
+    "1 - Sprzedane"
+    "2 - Wydane"
+    "3 - Pobrane"
+    "4 - Fizycznie zarezerwowane"
+    "5 - Zamówione zarezerwowane"
+    "6 - Zamówione"
+    "7 - Oferta rozchodu"
+}
+
+enum ReferenceCategory {
+    "0 - Zamówienie sprzedaży"
+    "1 - Produkcja"
+    "3 - Zamówienie zakupu"
+    "4 - Transakcja"
+    "5 - Korekta zapasów"
+    "6 - Przeniesienie"
+    "7 - Średnia ważona zamknięcia magazynu"
+    "8 - Wiersz produkcji"
+    "9 - Wiersz BOM"
+    "10 - BOM"
+    "11 - Zamówienie wyjścia"
+    "13 - Projekt"
+    "14 - Inwentaryzacja"
+    "15 - Transport palet"
+    "16 - Zlecenie kwarantanny"
+    "17 - Środki trwałe"
+    "18 - Wysyłka zamówienia przeniesienia"
+    "19 - Przyjęcie zamówienia przeniesienia"
+    "20 - Odpadki zamówienia przeniesienia"
+    "21 - Oferta"
+    "23 - Zlecenie kontroli jakości"
+    "24 - Blokowanie zapasów"
+    "25 - Zadanie w systemie Kanban"
+    "26 - Przyjęcie przeniesienia w systemie Kanban"
+    "27 - Wydanie przeniesienia zadania w systemie Kanban"
+    "28 - Zużycie w ramach zadania w systemie Kanban"
+    "29 - Zadanie w toku w systemie Kanban"
+    "30 - Pusta karta Kanban"
+    "31 - Wytwarzanie produktu towarzyszącego"
+    "33 - Produkt uboczny"
+    "34 - Środki trwałe"
+    "35 - Zestawienie"
+    "36 - Components"
+    "37 - Praca"
+    "38 - Zmiana stanu zapasów"
+    "39 - Kontener"
+    "40 - Zamówienie uzupełnienia zapasów konsygnacyjnych"
+    "41 - Zmiana własności"
+}
 
 enum TransferStatus {
     "0 - Utworzone"
