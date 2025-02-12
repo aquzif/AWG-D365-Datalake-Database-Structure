@@ -9,7 +9,7 @@ Project Synapse {
 }
 
 Table InventTrans {
-    RecID int [note: "Identyfikator rekordu"]
+    RecId int [note: "Identyfikator rekordu"]
     ItemId string [note: "Kod Materiału"]
     DatePhysical date [note:"Data fizycznej transakcji"]
     DateFinancial date [note: "Data finansowa"]
@@ -20,7 +20,7 @@ Table InventTrans {
 }
 
 Table InventTransOrigin {
-    RecID int [note: "Identyfikator rekordu"]
+    RecId int [note: "Identyfikator rekordu"]
     ReferenceCategory ITORefCat [note: "Kategoria odwołania"]
     ReferenceId string [note: "Wartość (numer) odwołania"]
     note: "Tabela z informacjami o transakcji magazynowej?"
@@ -485,7 +485,7 @@ Ref: "CustTable"."AccountNum" < "CustInvoiceJour"."InvoiceAccount"
 Ref: "DirPartyLocation"."Party" - "DirPartyTable"."RecId"
 Ref: "LogisticsLocation"."RecId" - "DirPartyLocation"."Location"
 Ref: "DirPartyLocation"."RecId" - "LogisticsPostalAddress"."Location"
-Ref: "InventTrans"."InventTransOrigin" - "InventTransOrigin"."RECID"
+Ref: "InventTrans"."InventTransOrigin" - "InventTransOrigin"."RecId"
 
 
 
