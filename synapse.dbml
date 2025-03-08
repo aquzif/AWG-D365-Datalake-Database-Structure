@@ -19,6 +19,21 @@ Table InventTrans {
     note: "Tabela z transakcjami magazynowymi"
 }
 
+Table ReqItemTable {
+    RecId int [note: "Identyfikator rekordu"]
+    ItemId string [note: "Kod Materiału"]
+    InventDimId string
+    MinInventOnhand decimal [note: "Ilość minimalna"]
+    ReqPoType ReqPoType [note: "Typ zapotrzebowania"] 
+    ReqPoTypeActive bit [note: "Zmień typ zamówienia planowanego"]
+    ReqGroupId string [note: "Grupa zapotrzebowania"]
+    VendId string [note: "Kod Dostawcy"]
+    ItemConFieldsActive bit [note: "Użyj określonych ustawień"]
+    InventLocationIdReqMain string [note: "Magazyn główny"]
+
+    note: "Tabela z przepływami magazynowymi / Zapotrzebowaniem na towary"
+}
+
 Table InventTransOrigin {
     RecId int [note: "Identyfikator rekordu"]
     ReferenceCategory ITORefCat [note: "Kategoria odwołania"]
@@ -579,6 +594,12 @@ enum SalesStatus {
     // 2 [note: "Dostarczone"]
     // 3 [note: "Zafakturowane"]
     // 4 [note: "Anuloowane"]
+}
+
+enum ReqPoType {
+    "0 - Zakup"
+    "1 - Produkcja"
+    "2 - Przeniesienie"
 }
 
 enum LoadTemplateId {
